@@ -51,10 +51,6 @@ if ingredients_list:
     
     if time_to_insert:                              #Execute the insert when button clicked
         session.sql(my_insert_stmt).collect()
-
-        
-        #st.success('Your Smoothie is ordered!', icon="✅")
-
         st.success(f"Smoothie for {name_on_order} is ordered!", icon="✅")
 
 #END-----------------------------------------------------------------------
