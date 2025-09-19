@@ -2,7 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
-import pd
+import panda as pd
 
 #-----------------------------------------------------------------------
 # Title and Intro
