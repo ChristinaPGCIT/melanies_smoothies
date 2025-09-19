@@ -67,6 +67,12 @@ if ingredients_list:
         #st.success('Your Smoothie is ordered!', icon="✅")
 
         st.success(f"Smoothie for {name_on_order} is ordered!", icon="✅")
+#-----------------------------------------------------------------------
+# New section to display smoothiefroot nutrition info
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
+
 #END-----------------------------------------------------------------------
 #1. Pull fruit names from Snowflake.
 #2. Show them as options in a multi-select.
