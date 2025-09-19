@@ -82,3 +82,4 @@ if ingredients_list:
 #4. Build a string of those fruits.
 #5. When they click “Submit Order,” insert their name + chosen fruits into the orders table in Snowflake.
 #6. Show a success message.
+
