@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 #-----------------------------------------------------------------------
 # Title and Intro
@@ -50,9 +51,10 @@ if ingredients_list:
     
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
         
     st.write(ingredients_string)
-
 
     #Creates a SQL INSERT statement as a text string
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
@@ -67,13 +69,6 @@ if ingredients_list:
         #st.success('Your Smoothie is ordered!', icon="✅")
 
         st.success(f"Smoothie for {name_on_order} is ordered!", icon="✅")
-#-----------------------------------------------------------------------
-# New section to display smoothiefroot nutrition info
-import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response.json())
-sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
-
 
 #END-----------------------------------------------------------------------
 #1. Pull fruit names from Snowflake.
