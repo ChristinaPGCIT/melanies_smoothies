@@ -1,6 +1,3 @@
-Make a Second File for your Repo
-The other file that makes up your SiS app is called environment.yaml. Download that file. 
-
-Create a second file in your Repo called requirements.txt. Copy the contents of the environment.yaml file into the requirements.txt file and save the file in your repo. 
-
-WARNING: Someone has reported that naming your requirements file with a capital R (Requirements.txt) can cause issues. We haven't confirmed that this causes issues, but we recommend sticking with lower case. 
+# requriements.txt
+snowflake-snowpart-python
+streamlit
