@@ -18,22 +18,9 @@ cnx = st.connection("snowflake", type="snowflake")
 session = cnx.session()
 
 # -------------------------------------
-# --- TEMP: connection sanity check ---
-st.write(session.sql("select current_account(), current_role(), current_warehouse(), current_database(), current_schema()").collect())
-#-----------------------------------------------------------------------
 # Customer input: list of ingredients
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-
-#Show the fruit options rendered in the fruit_option table fruit_name column.
-#st.dataframe(data=my_dataframe, use_container_width=True)
-
-#Let the user pick ingredients
-# ingredients_list = st.multiselect(
-#     "Choose up to 5 ingredients: ",
-#     my_dataframe
-#     #default=["Apples", "Blueberries"],
-# )
 
 # Convert Snowpark DataFrame to a simple Python list of fruit names
 fruit_options = [row["FRUIT_NAME"] for row in my_dataframe.collect()]
