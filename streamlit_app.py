@@ -2,6 +2,17 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 
+# This will pull credentials from your [connections.snowflake] block in Secrets
+cnx = st.connection("snowflake", type="snowflake")
+
+# Test query: make sure it connects
+with cnx.cursor() as cur:
+    cur.execute("""
+        SELECT current_account(), current_role(), current_warehouse(),
+               current_database(), current_schema()
+    """)
+    st.write(cur.fetchone())
+
 #-----------------------------------------------------------------------
 # Title and Intro
 st.title(f":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
